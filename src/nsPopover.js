@@ -43,7 +43,7 @@
     function(nsPopover, $rootScope, $timeout, $templateCache, $q, $http, $compile, $document, $parse) {
       return {
         restrict: 'A',
-        scope: true,
+        scope: {openCallback: '&nsPopoverOpenCallback', closeCallback: '&nsPopoverCloseCallback'},
         link: function(scope, elm, attrs) {
           var defaults = nsPopover.getDefaults();
 
@@ -125,6 +125,9 @@
                   // Hide the popover without delay on the button click events.
                   elm.on('click', buttonClickHandler);
                 }
+                if (scope.openCallback) {
+                    scope.openCallback({fetch: (function() { return elm; })});
+                }
               }, delay*1000);
             },
 
@@ -156,6 +159,9 @@
                 $popover.isOpen = false;
                 displayer_.cancel();
                 $popover.css('display', 'none');
+                if (scope.closeCallback) {
+                    scope.closeCallback({fetch: (function() { return elm; })});
+                }
               }, delay*1000);
             },
 
@@ -322,7 +328,7 @@
               .css('top', top.toString() + 'px')
               .css('left', left.toString() + 'px');
 
-            if (triangle) {
+            if (triangle && triangle.length) {
               if (placement === 'top' || placement === 'bottom') {
                 left = rect.left + rect.width / 2 - left;
                 triangle.css('left', left.toString() + 'px');
