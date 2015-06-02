@@ -23,7 +23,8 @@
       hideOnOutsideClick: true,
       hideOnButtonClick: true,
       mouseRelative: '',
-      popupDelay: 0
+      popupDelay: 0,
+      activeClass: ''
     };
 
     this.setDefaults = function(newDefaults) {
@@ -63,7 +64,8 @@
             hideOnButtonClick: toBoolean(attrs.nsPopoverHideOnButtonClick || defaults.hideOnButtonClick),
             mouseRelative: attrs.nsPopoverMouseRelative,
             popupDelay: attrs.nsPopoverPopupDelay || defaults.popupDelay,
-            group: attrs.nsPopoverGroup
+            group: attrs.nsPopoverGroup,
+            activeClass: attrs.nsPopoverActiveClass || defaults.activeClass
           };
 
           if (options.mouseRelative) {
@@ -99,6 +101,9 @@
 
               displayer_.id_ = $timeout(function() {
                 $popover.isOpen = true;
+                if(options.activeClass) {
+                    elm.addClass(options.activeClass);
+                }
                 $popover.css('display', 'block');
 
                 // position the popover accordingly to the defined placement around the
@@ -156,6 +161,9 @@
                 $popover.isOpen = false;
                 displayer_.cancel();
                 $popover.css('display', 'none');
+                if(options.activeClass) {
+                  elm.removeClass(options.activeClass);
+                }
               }, delay*1000);
             },
 
