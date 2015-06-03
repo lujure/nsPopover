@@ -143,6 +143,11 @@ Locks the position relative to the mouse. The following are possible values:
 The ``ns-popover-group`` specifies the group of popovers which should be closed when this instance is shown. This allows
 the construction of popovers that acts like a modal dialog.
 
+### ``ns-popover-active-class {String}``
+
+The ``ns-popover-active-class`` contains the name of a css class to append to the initiating element when the popover
+becomes active. The class is removed when the popover is closed.
+
 ### Programmatic Hiding of the Popover
 
 Register the ``hidePopover()`` function against a ``ng-click`` directive to hide the popover when a specific element is clicked (e.g. a close button):
