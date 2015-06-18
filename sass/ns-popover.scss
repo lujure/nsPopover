@@ -183,6 +183,15 @@ $popover-triangle-border-color: $popover-border-color !default;
     }
   }
 
+  &.ns-popover-mobile-ribbon {
+    .triangle {
+      display: none;
+    }
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
   &.ns-popover-left-align {
     .ns-popover-tooltip {
       margin-left: 0;
