@@ -25,7 +25,7 @@
       mouseRelative: '',
       popupDelay: 0,
       activeClass: '',
-      mobileResponsive: true
+      mobileResponsive: false
     };
 
     this.setDefaults = function(newDefaults) {
@@ -124,7 +124,7 @@
                   // Hide the popover without delay on the popover click events.
                   $popover.on('click', insideClickHandler);
                 }
-                if (options.hideOnOutsideClick) {
+                if (options.hideOnOutsideClick || mobileCheck()) {
                   // Hide the popover without delay on outside click events.
                   $document.on('click', outsideClickHandler);
                 }
