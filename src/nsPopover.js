@@ -22,6 +22,7 @@
       hideOnInsideClick: false,
       hideOnOutsideClick: true,
       hideOnButtonClick: true,
+      hideOnPageScroll: false,
       mouseRelative: '',
       popupDelay: 0,
       activeClass: '',
@@ -63,6 +64,7 @@
             hideOnInsideClick: toBoolean(attrs.nsPopoverHideOnInsideClick || defaults.hideOnInsideClick),
             hideOnOutsideClick: toBoolean(attrs.nsPopoverHideOnOutsideClick || defaults.hideOnOutsideClick),
             hideOnButtonClick: toBoolean(attrs.nsPopoverHideOnButtonClick || defaults.hideOnButtonClick),
+            hideOnPageScroll: toBoolean(attrs.nsPopoverHideOnPageScroll || defaults.hideOnPageScroll),
             mouseRelative: attrs.nsPopoverMouseRelative,
             popupDelay: attrs.nsPopoverPopupDelay || defaults.popupDelay,
             group: attrs.nsPopoverGroup,
@@ -127,6 +129,10 @@
                 if (options.hideOnOutsideClick || mobileCheck()) {
                   // Hide the popover without delay on outside click events.
                   $document.on('click', outsideClickHandler);
+                }
+                if (options.hideOnPageScroll || mobileCheck()) {
+                  // Hide the popover without delay on outside click events.
+                  $document.on('scroll', scrollHandler);
                 }
                 if (options.hideOnButtonClick) {
                   // Hide the popover without delay on the button click events.
@@ -453,7 +459,14 @@
             }
           }
 
-          function outsideClickHandler(e) {
+          function scrollHandler(e) {
+            if ($popover.isOpen) {
+              hider_.hide(0);
+            }
+          }
+
+
+            function outsideClickHandler(e) {
             if ($popover.isOpen && e.target !== elm[0]) {
               var id = $popover[0].id;
               if (!isInPopover(e.target)) {
