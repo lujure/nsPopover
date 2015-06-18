@@ -188,8 +188,8 @@ $popover-triangle-border-color: $popover-border-color !default;
       display: none;
     }
     .ns-popover-tooltip {
-      margin: 0 !important;
-      max-width: none !important;
+      margin: 0;
+      max-width: none;
       padding: 10px;
       text-align: center;
       border-radius: 0;
