@@ -183,6 +183,24 @@ $popover-triangle-border-color: $popover-border-color !default;
     }
   }
 
+  &.ns-popover-mobile-ribbon {
+    .triangle {
+      display: none;
+    }
+    .ns-popover-tooltip {
+      margin: 0;
+      max-width: none;
+      padding: 10px;
+      text-align: center;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
   &.ns-popover-left-align {
     .ns-popover-tooltip {
       margin-left: 0;
