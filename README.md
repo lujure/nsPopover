@@ -104,6 +104,11 @@ DOM element can trigger, default: ``click``.
 The ``ns-popover-timeout`` specify the time to wait before closing the popover and after the mouseout event is
 triggered by the popover.
 
+### ``ns-popover-mobile-responsive {Boolean}``
+
+The ``ns-popover-mobile-responsive`` flag indicates if the popover should switch to ribbon mode on mobile browsers.
+default: ``false``
+
 ### ``ns-popover-placement {String}``
 
 Specifies how to position the popover relative to the triggering element. The placement attribute has the given
@@ -130,6 +135,11 @@ right | bottom | The popover will be positioned on the right side of the trigger
 
 The ``ns-popover-hide-on-click`` specify whether to close the popover when clicking on it, default: ``true``. This
 allows for element-targeted closing of the popover (e.g via a close button within the popover element).
+
+### ``ns-popover-hide-on-scroll {Boolean}``
+
+The ``ns-popover-hide-on-scroll`` specify whether to close the popover when the page is scolled, default: ``false``.
+
 
 ### ``ns-popover-mouse-relative {{String}}``
 
